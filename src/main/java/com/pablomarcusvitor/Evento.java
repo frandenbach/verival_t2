@@ -1,5 +1,4 @@
-package com.bcopstein;
-
+package com.pablomarcusvitor;
 
 public class Evento {
     private int id;

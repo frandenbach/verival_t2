@@ -1,4 +1,4 @@
-package com.bcopstein;
+package com.pablomarcusvitor;
 
 public class EstatisticasDTO {
     private double media;

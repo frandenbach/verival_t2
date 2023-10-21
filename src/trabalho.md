@@ -2,10 +2,18 @@
 
 Tendo os códigos em mãos, faça o que se pede:
 
-a.     Crie drivers de teste unitário para as classes EstatisticaNomal e EstatisticaDesconsidera. É necessário o uso de dubles neste caso? Que tipo de dubles? Sim, stub.
+a.     Crie drivers de teste unitário para as classes EstatisticaNomal e EstatisticaDesconsidera. É necessário o uso de dubles neste caso? Que tipo de dubles?
+
+## R: Foi usado mock, pois foi verificado o comportamento da classe (...)
 
 b.     Crie um driver de teste unitário para a classe ServicoEstatisticas. É necessário algum tipo de duble neste caso? Que tipos de dubles?
 
+## R: 
+
 c.      Crie um driver de teste para testar a integração da classe EstatisticaNormal com ServicoEstatisticas. É necessário algum tipo de duble neste caso? Que tipos de dubles?
 
+## R:
+
 d.     Crie um driver de teste para testar a integração da classe EstatisticaDesconsidera com ServicoEstatisticas. É necessário algum tipo de duble neste caso? Que tipos de dubles?
+
+## R:

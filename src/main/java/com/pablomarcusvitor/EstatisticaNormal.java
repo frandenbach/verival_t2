@@ -1,4 +1,4 @@
-package com.bcopstein;
+package com.pablomarcusvitor;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -20,11 +20,11 @@ public class EstatisticaNormal implements ICalculoEstatistica {
         // Obtém um stream com os valores ordenados
         List<Double> valores = eventos
             .stream()
-            .map(e-> e.getHoras()*60*60 + e.getMinutos()*60.0 + e.getSegundos())
+            .map(e -> e.getHoras()*60*60 + e.getMinutos()*60.0 + e.getSegundos())
             .sorted()
             .collect(Collectors.toList());
         // Calcula a média
-        double media = valores
+        Double media = valores
             .stream()
             .mapToDouble(v->v)
             .average()
@@ -34,7 +34,7 @@ public class EstatisticaNormal implements ICalculoEstatistica {
         if (valores.size() > 0){
             mediana =
                 ((valores.size() % 2 == 0) ?
-                (valores.get(valores.size()/2 - 1))+(valores.get(valores.size()/2))/2.0 :
+                ((valores.get(valores.size()/2 - 1))+(valores.get(valores.size()/2)))/2.0 :
                 (valores.get(valores.size()/2)));
         }
         // Calcula o desvio padrao
