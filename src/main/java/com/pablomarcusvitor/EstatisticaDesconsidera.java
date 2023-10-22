@@ -21,12 +21,10 @@ public class EstatisticaDesconsidera implements ICalculoEstatistica {
         // Se tem mais de 2 elementos remove o primeiro e o último
         
         /* Conferir
-
         if (eventos.size() >= 3){
             eventos.remove(0);
             eventos.remove(eventos.size()-1);
         }
-        
         */
 
         // Calcula a média
