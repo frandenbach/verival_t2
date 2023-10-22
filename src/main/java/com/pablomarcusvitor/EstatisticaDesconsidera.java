@@ -14,19 +14,16 @@ public class EstatisticaDesconsidera implements ICalculoEstatistica {
         // Seleciona os eventos da distancia informada
         List<Evento> eventos = eventoRep.todos().stream().filter(e -> e.getDistancia() == distancia)
                 .collect(Collectors.toList());
-        // Obtém um stream com os valores ordenados
-        List<Double> valores = eventos.stream()
-                .map(e -> e.getHoras() * 60 * 60 + e.getMinutos() * 60.0 + e.getSegundos()).sorted()
-                .collect(Collectors.toList());
         // Se tem mais de 2 elementos remove o primeiro e o último
-        
-        /* Conferir
         if (eventos.size() >= 3){
             eventos.remove(0);
             eventos.remove(eventos.size()-1);
         }
-        */
-
+        // Obtém um stream com os valores ordenados
+        List<Double> valores = eventos.stream()
+                .map(e -> e.getHoras() * 60 * 60 + e.getMinutos() * 60.0 + e.getSegundos())
+                .sorted()
+                .collect(Collectors.toList());
         // Calcula a média
         Double media = valores.stream().mapToDouble(v -> v).average().orElse(Double.NaN);
         // Calcula mediana

@@ -1,0 +1,8 @@
+com/pablomarcusvitor/EstatisticaNormal.class
+com/pablomarcusvitor/ServicoEstatistica.class
+com/pablomarcusvitor/EstatisticaDesconsidera.class
+com/pablomarcusvitor/IEventoRepository.class
+com/pablomarcusvitor/ICalculoEstatistica.class
+com/pablomarcusvitor/Evento.class
+com/pablomarcusvitor/PerformanceDTO.class
+com/pablomarcusvitor/EstatisticasDTO.class

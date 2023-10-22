@@ -7,7 +7,7 @@ public class ServicoEstatistica {
     private IEventoRepository eventoRep;
     private ICalculoEstatistica calculoEstatistica;
 
-    public ServicoEstatistica(IEventoRepository eventoRepository,ICalculoEstatistica calculoEstatistica){
+    public ServicoEstatistica(IEventoRepository eventoRepository, ICalculoEstatistica calculoEstatistica){
         this.eventoRep = eventoRepository;
         this.calculoEstatistica = calculoEstatistica;
     }
@@ -16,26 +16,34 @@ public class ServicoEstatistica {
         return calculoEstatistica.calculaEstatisticas(distancia);
     }
 
-    public PerformanceDTO calculaAumentoPerformance(int distancia,int ano){
+    public PerformanceDTO calculaAumentoPerformance(int ano){
         List<Evento> eventos = eventoRep
                         .todos()
                         .stream()
                         .filter(e->e.getAno() == ano)
                         .collect(Collectors.toList());
-        int indiceMaiorDif = 0;
+        int indiceMaiorDif1 = 0;
+        int indiceMaiorDif2 = 0;
         double maiorDif = -1.0;
-        for(int i=0;i<eventos.size()-1;i++){
-            Evento e1 = eventos.get(i);
-            Evento e2 = eventos.get(i+1);
-            double tempo1  = e1.getHoras()*60*60 + e1.getMinutos()*60.0 + e1.getSegundos();
-            double tempo2  = e2.getHoras()*60*60 + e2.getMinutos()*60.0 + e2.getSegundos();
-            if ((tempo1-tempo2)>maiorDif){
-                maiorDif = tempo1-tempo2;
-                indiceMaiorDif = i;
+
+        for (int i = 0; i < eventos.size(); i++) {
+            for (int j = i + 1; j < eventos.size(); j++) {
+                Evento e1 = eventos.get(i);
+                Evento e2 = eventos.get(j);
+                double tempo1 = e1.getHoras() * 60 * 60 + e1.getMinutos() * 60.0 + e1.getSegundos();
+                double tempo2 = e2.getHoras() * 60 * 60 + e2.getMinutos() * 60.0 + e2.getSegundos();
+                double diferenca = Math.abs(tempo1 - tempo2);
+    
+                if (diferenca > maiorDif) {
+                    maiorDif = diferenca;
+                    indiceMaiorDif1 = i;
+                    indiceMaiorDif2 = j;
+                }
             }
-        }         
-        return new PerformanceDTO(eventos.get(indiceMaiorDif).getNome(),
-                                  eventos.get(indiceMaiorDif+1).getNome(),
+        }
+
+        return new PerformanceDTO(eventos.get(indiceMaiorDif1).getNome(),
+                                  eventos.get(indiceMaiorDif2).getNome(),
                                   maiorDif);
     }
 }
