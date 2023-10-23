@@ -1,6 +1,6 @@
 TRABALHO 2
 
-- Pablo Montiel, Vitor Venturini e Marcus Quirino
+>>> Pablo Montiel, Vitor Venturini e Marcus Quirino
 
 • A classe "ServicoEstatisticas” calcula dois tipos de estatísticas sobre um conjunto de eventos: média, mediana e desvio padrão e maior ganho de performance. Para o cálculo da média, mediana e desvio padrão pode ser usadas abordagens diferentes. O cálculo do maior ganho de performance é fixo.
 
@@ -12,15 +12,15 @@ a.     Crie drivers de teste unitário para as classes EstatisticaNomal e Estati
 
 b.     Crie um driver de teste unitário para a classe ServicoEstatisticas. É necessário algum tipo de duble neste caso? Que tipos de dubles?
 
-## R: Vimos a necessidade de usar "mocks" para isolar a classe sendo testada (no caso, ServicoEstatistica) de suas dependências IEventoRepository e ICalculoEstatistica, assim focando no comportamento da ServicoEstatistica.
+## R: Vimos a necessidade de usar "mocks" para isolar a classe sendo testada (no caso, ServicoEstatistica) de suas dependências IEventoRepository e ICalculoEstatistica, assim focando no comportamento da ServicoEstatistica. Dessa forma, não precisamos implementar outras duas classes para realizar os testes.
 
 c.      Crie um driver de teste para testar a integração da classe EstatisticaNormal com ServicoEstatisticas. É necessário algum tipo de duble neste caso? Que tipos de dubles?
 
-## R: Vimos a necessidade de usar dublês do tipo "mock" para simular o comportamento da interface IEventoRepository. Fazendo isso isolamos a dependência do IEventoRepository e especificar seu comportamento para o teste, garantindo que o teste se concentre nas classes EstatisticaNormal e ServicoEstatistica.
+## R: Vimos a necessidade de usar dublês do tipo "mock" para simular o comportamento da interface IEventoRepository, sem precisar fazer a implementação real dela. Caso fosse feito, não haveria necessidade de usar dublês. Fazendo isso isolamos a dependência do IEventoRepository e especificar seu comportamento para o teste, garantindo que o teste se concentre nas classes EstatisticaNormal e ServicoEstatistica.
 
 d.     Crie um driver de teste para testar a integração da classe EstatisticaDesconsidera com ServicoEstatisticas. É necessário algum tipo de duble neste caso? Que tipos de dubles?
 
-## R: Assim como no anterior, usamos apenas "mock" para simular o comportamento da interface IEventoRepository, isolando da mesma forma a dependência para se concentrar nas classes EstatisticaDesconsidera e ServicoEstatistica.
+## R: Não é necessário o uso de dublês, o que se quer testar é a integração entre as classes EstatisticaDesconsidera e ServicoEstatistica, e pode ser feito com a implementação real do IEventoRepository. A questão é que então se precisa criar uma implementação da interface de IEventoReposiroty. Então, assim como no anterior, usamos apenas "mock" para simular o comportamento da interface IEventoRepository, isolando da mesma forma a dependência para se concentrar nas classes EstatisticaDesconsidera e ServicoEstatistica.
 
 
 ### Relatório do Processo
