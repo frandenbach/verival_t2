@@ -1,6 +1,8 @@
 TRABALHO 2
 
-A classe "ServicoEstatisticas” calcula dois tipos de estatísticas sobre um conjunto de eventos: média, mediana e desvio padrão e maior ganho de performance. Para o cálculo da média, mediana e desvio padrão pode ser usadas abordagens diferentes. O cálculo do maior ganho de performance é fixo.
+- Pablo Montiel, Vitor Venturini e Marcus Quirino
+
+• A classe "ServicoEstatisticas” calcula dois tipos de estatísticas sobre um conjunto de eventos: média, mediana e desvio padrão e maior ganho de performance. Para o cálculo da média, mediana e desvio padrão pode ser usadas abordagens diferentes. O cálculo do maior ganho de performance é fixo.
 
 Tendo os códigos em mãos, faça o que se pede:
 

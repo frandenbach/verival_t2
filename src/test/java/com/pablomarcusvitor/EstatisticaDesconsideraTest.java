@@ -14,22 +14,23 @@ public class EstatisticaDesconsideraTest {
         IEventoRepository eventoRep = mock(IEventoRepository.class);
 
         List<Evento> listaEventos = Arrays.asList(
-            new Evento(10, "POA Day RUN", 10, 3, 2022, 5000, 0, 43, 0),
-            new Evento(12, "POA Night RUN", 15, 5, 2021, 5000, 0, 42, 0),
-            new Evento(11, "NIKE RUN", 17, 6, 2021, 21000, 1, 22, 0),
-            new Evento(14, "SUMMER RUN", 22, 8, 2021, 5000, 0, 41, 0),
-            new Evento(16, "SPRING RUN", 22, 8, 2022, 5000, 0, 41, 30),
-            new Evento(18, "WINTER RUN", 2, 8, 2021, 5000, 0, 42, 30),
-            new Evento(20, "FALL RUN", 11, 5, 2022, 21000, 1, 15, 20));
+            new Evento(20,"Corrida Pela Vida", 5, 4, 2023, 8000, 0, 45, 20),
+            new Evento(21,"Corrida Diabetes", 6, 5, 2023, 8000, 0, 50,0),
+            new Evento(22,"Maratona POA Run", 7, 6, 2023, 25000, 1, 30,0),
+            new Evento(23,"Corrida Contra Alcoolismo", 8, 7, 2023, 8000, 1, 10, 0),      
+            new Evento(24,"Corrida Dia dos Pais", 9, 8, 2022, 8000, 0, 55, 30),     
+            new Evento(25,"October Run", 31, 10, 2023, 8000, 0, 40, 30),
+            new Evento(26, "Maratona Guaíba", 10, 9, 2022, 25000, 3, 15, 0)
+        );
 
         when(eventoRep.todos()).thenReturn(listaEventos);
 
         EstatisticaDesconsidera estatistica = new EstatisticaDesconsidera(eventoRep);
-        EstatisticasDTO resultadoMaisDe2 = estatistica.calculaEstatisticas(5000);
+        EstatisticasDTO resultadoMaisDe2 = estatistica.calculaEstatisticas(8000);
 
-        assertEquals(2490, resultadoMaisDe2.getMedia(), 0.001);
-        assertEquals(2490, resultadoMaisDe2.getMediana(), 0.001);
-        assertEquals(24.494897, resultadoMaisDe2.getDesvioPadrao(), 0.001);
+        assertEquals(3510, resultadoMaisDe2.getMedia(), 0.001);
+        assertEquals(3330, resultadoMaisDe2.getMediana(), 0.001);
+        assertEquals(506.162029, resultadoMaisDe2.getDesvioPadrao(), 0.001);
     }
 
     @Test
@@ -37,22 +38,23 @@ public class EstatisticaDesconsideraTest {
         IEventoRepository eventoRep = mock(IEventoRepository.class);
 
         List<Evento> listaEventos = Arrays.asList(
-                new Evento(10, "POA Day RUN", 10, 3, 2022, 5000, 0, 43, 0),
-                new Evento(12, "POA Night RUN", 15, 5, 2021, 5000, 0, 42, 0),
-                new Evento(11, "NIKE RUN", 17, 6, 2021, 21000, 1, 22, 0),
-                new Evento(14, "SUMMER RUN", 22, 8, 2021, 5000, 0, 41, 0),
-                new Evento(16, "SPRING RUN", 22, 8, 2022, 5000, 0, 41, 30),
-                new Evento(18, "WINTER RUN", 2, 8, 2021, 5000, 0, 42, 30),
-                new Evento(13, "FALL RUN", 11, 5, 2022, 21000, 1, 15, 20));
+            new Evento(20,"Corrida Pela Vida", 5, 4, 2023, 8000, 0, 45, 20),
+            new Evento(21,"Corrida Diabetes", 6, 5, 2023, 8000, 0, 50,0),
+            new Evento(22,"Maratona POA Run", 7, 6, 2023, 25000, 1, 30,0),
+            new Evento(23,"Corrida Contra Alcoolismo", 8, 7, 2023, 8000, 1, 10, 0),      
+            new Evento(24,"Corrida Dia dos Pais", 9, 8, 2022, 8000, 0, 55, 30),     
+            new Evento(25,"October Run", 31, 10, 2023, 8000, 0, 40, 30),
+            new Evento(26, "Maratona Guaíba", 10, 9, 2022, 25000, 3, 15, 0)
+        );
 
         when(eventoRep.todos()).thenReturn(listaEventos);
 
         EstatisticaDesconsidera estatistica = new EstatisticaDesconsidera(eventoRep);
-        EstatisticasDTO resultadoMenosDe3 = estatistica.calculaEstatisticas(21000);
+        EstatisticasDTO resultadoMenosDe3 = estatistica.calculaEstatisticas(25000);
 
-        assertEquals(4720, resultadoMenosDe3.getMedia(), 0.001);
-        assertEquals(4720, resultadoMenosDe3.getMediana(), 0.001);
-        assertEquals(200, resultadoMenosDe3.getDesvioPadrao(), 0.001);
+        assertEquals(8550, resultadoMenosDe3.getMedia(), 0.001);
+        assertEquals(8550, resultadoMenosDe3.getMediana(), 0.001);
+        assertEquals(3150, resultadoMenosDe3.getDesvioPadrao(), 0.001);
     }
 
 }

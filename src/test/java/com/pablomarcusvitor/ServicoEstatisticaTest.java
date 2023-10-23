@@ -15,13 +15,13 @@ public class ServicoEstatisticaTest {
         ICalculoEstatistica calculoEstatistica = mock(ICalculoEstatistica.class);
         ServicoEstatistica servicoEstatistica = new ServicoEstatistica(eventoRepository, calculoEstatistica);
 
-        when(calculoEstatistica.calculaEstatisticas(5000)).thenReturn(new EstatisticasDTO(4720, 4720, 200));
+        when(calculoEstatistica.calculaEstatisticas(25000)).thenReturn(new EstatisticasDTO(8550, 8550, 3150));
 
-        EstatisticasDTO estatisticas = servicoEstatistica.calculaEstatisticas(5000);
+        EstatisticasDTO estatisticas = servicoEstatistica.calculaEstatisticas(25000);
 
-        assertEquals(4720, estatisticas.getMedia(), 0.001);
-        assertEquals(4720, estatisticas.getMediana(), 0.001);
-        assertEquals(200, estatisticas.getDesvioPadrao(), 0.001);
+        assertEquals(8550, estatisticas.getMedia(), 0.001);
+        assertEquals(8550, estatisticas.getMediana(), 0.001);
+        assertEquals(3150, estatisticas.getDesvioPadrao(), 0.001);
     }
 
     @Test
@@ -31,21 +31,21 @@ public class ServicoEstatisticaTest {
         ServicoEstatistica servicoEstatistica = new ServicoEstatistica(eventoRepository, calculoEstatistica);
 
         List<Evento> listaEventos = Arrays.asList(
-            new Evento(10,"POA Day RUN", 10, 3, 2022, 5000, 0, 43, 0),
-            new Evento(12,"POA Night RUN", 15, 5, 2021, 5000, 0, 42,0),
-            new Evento(11,"NIKE RUN", 17, 6, 2021, 21000, 1, 22,0),
-            new Evento(14,"SUMMER RUN", 22, 8, 2021, 5000, 0, 41, 0),      
-            new Evento(16,"SPRING RUN", 22, 8, 2022, 5000, 0, 41, 30),     
-            new Evento(18,"WINTER RUN", 2, 8, 2021, 5000, 0, 42, 30),
-            new Evento(20, "FALL RUN", 11, 5, 2022, 21000, 1, 15, 20)
+            new Evento(20,"Corrida Pela Vida", 5, 4, 2023, 8000, 0, 45, 20),
+            new Evento(21,"Corrida Diabetes", 6, 5, 2023, 8000, 0, 50,0),
+            new Evento(22,"Maratona POA Run", 7, 6, 2023, 25000, 1, 30,0),
+            new Evento(23,"Corrida Contra Alcoolismo", 8, 7, 2023, 8000, 1, 10, 0),      
+            new Evento(24,"Corrida Dia dos Pais", 9, 8, 2022, 8000, 0, 55, 30),     
+            new Evento(25,"October Run", 31, 10, 2023, 8000, 0, 40, 30),
+            new Evento(26, "Maratona Guaíba", 10, 9, 2022, 25000, 3, 15, 0)
         );
 
         when(eventoRepository.todos()).thenReturn(listaEventos);
 
-        PerformanceDTO performanceDTO = servicoEstatistica.calculaAumentoPerformance(2022);
+        PerformanceDTO performanceDTO = servicoEstatistica.calculaAumentoPerformance(2023);
 
-        assertEquals("SPRING RUN", performanceDTO.getProva1());
-        assertEquals("FALL RUN", performanceDTO.getProva2());
-        assertEquals(2030, performanceDTO.getReducao(), 0.001);
+        assertEquals("Maratona POA Run", performanceDTO.getProva1());
+        assertEquals("October Run", performanceDTO.getProva2());
+        assertEquals(2970.0, performanceDTO.getReducao(), 0.001);
     }
 }
